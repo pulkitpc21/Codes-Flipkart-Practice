@@ -1,0 +1,15 @@
+vector result;
+void combinator(string digits,map<int,string> m,int i,string output){
+    if(digits[i]=='\0')
+    result.push_back(output);
+    for(int k=0;k<m[digits[i]-'0'].size();k++)
+    combinator(digits,m,i+1,output+m[digits[i]-'0'][k]);
+}
+vector<string> lettersCombinations(string digits){
+    map<int,string> m = {{2,"abc"},{3,"def"},{4,"ghi"},{5,"jkl"},{6,"mno"},{7,"pqrs"},{8,"tuv"},{9,"wxyz"}};
+    if(digits.length()==0)
+    return {};
+    string output;
+    combinator(digits,m,0,output);
+    return result;
+}
